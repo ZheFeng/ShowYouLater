@@ -1,0 +1,10 @@
+{
+  "firebaseConfig": {
+    "apiKey": "AIzaSyBSPdTRcO4ZSxBuA_i9mZRAGze0FPkAI14",
+    "authDomain": "showyoulater-929e8.firebaseapp.com",
+    "databaseURL": "https://showyoulater-929e8.firebaseio.com",
+    "projectId": "showyoulater-929e8",
+    "storageBucket": "showyoulater-929e8.appspot.com",
+    "messagingSenderId": "789261927228"
+  }
+}
