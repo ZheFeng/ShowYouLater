@@ -1,6 +1,7 @@
 import { observable, computed } from "mobx";
 
 export default class User {
+  @observable friends = []
   @observable user = null
   @observable checkingAuthState = false
   @computed get isLoggedIn() {
@@ -11,15 +12,14 @@ export default class User {
     this.setFriends = this.setFriends.bind(this);
     this.setCurrentUser();
   }
-  addFriend(email) {
-    // return this.friendsDatabase.push({ test: 'test' });
-    return this.firebase.database().ref().child('users').orderByChild('email').equalTo(email).once('value').then(snap => {
-      return this.friendsDatabase.push({ ...snap.toJSON(), email });
-    });
+  addFriend(uid) {
+    return this.friendsDatabase.push({ uid });
   }
   setFriends(snap) {
     const friends = [];
-    snap.forEach(child => friends.push(child.val()));
+    snap.forEach(friend => {
+      friends.push({ ...friend.toJSON() })
+    });
     this.friends = friends;
   }
   setFriendsDatabase() {

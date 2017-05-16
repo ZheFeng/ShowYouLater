@@ -9,11 +9,11 @@ export default class AddFriend extends Component {
     super(props);
     this.addFriend = this.addFriend.bind(this);
     this.state = {
-      email: '',
+      uid: '',
     }
   }
   addFriend() {
-    this.props.user.addFriend(this.state.email);
+    this.props.user.addFriend(this.state.uid);
   }
   render() {
     return (
@@ -21,11 +21,11 @@ export default class AddFriend extends Component {
         <Content>
           <Form>
             <Item inlineLabel>
-              <Label>Email</Label>
-              <Input value={this.state.email} onChangeText={email => this.setState({ email })} />
+              <Label>User Id</Label>
+              <Input value={this.state.uid} onChangeText={uid => this.setState({ uid })} />
             </Item>
             <Button block onPress={this.addFriend}>
-              <Text>Sign In</Text>
+              <Text>Add</Text>
             </Button>
           </Form>
         </Content>
