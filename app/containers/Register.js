@@ -14,7 +14,7 @@ export default class Register extends Component {
     }
   }
   register() {
-    this.props.user.createUserWithEmailAndPassword(this.state.email, this.state.password);
+    this.props.app.createUserWithEmailAndPassword(this.state.email, this.state.password);
   }
   render() {
     return (

@@ -14,7 +14,7 @@ export default class Login extends Component {
     }
   }
   login() {
-    this.props.user.signInWithEmailAndPassword(this.state.email, this.state.password);
+    this.props.app.signInWithEmailAndPassword(this.state.email, this.state.password);
   }
   render() {
     const { navigate } = this.props.navigation

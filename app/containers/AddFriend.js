@@ -13,7 +13,7 @@ export default class AddFriend extends Component {
     }
   }
   addFriend() {
-    this.props.user.addFriend(this.state.uid);
+    this.props.app.addFriend(this.state.uid);
   }
   render() {
     return (

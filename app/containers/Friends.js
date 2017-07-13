@@ -7,8 +7,22 @@ export default class Friends extends Component {
   static navigationOptions = {
     title: 'Friends',
   };
+  constructor(props) {
+    super(props);
+    this.renderRoom = this.renderRoom.bind(this);
+  }
   signOut() {
-    this.props.user.signOut();
+    this.props.app.signOut();
+  }
+  showRoom() {
+
+  }
+  renderRoom(room) {
+    return (
+      <ListItem>
+        <Text>{room.key}</Text>
+      </ListItem>
+    )
   }
   render() {
     const { navigate } = this.props.navigation;
@@ -17,7 +31,7 @@ export default class Friends extends Component {
         <Button onPress={() => this.signOut()}>
           <Title>Sign Out</Title>
         </Button>
-        <List>{this.props.user.friends.map(friend => (<ListItem><Text>{friend.uid}</Text></ListItem>))}</List>
+        <List>{this.props.app.rooms.map(this.renderRoom)}</List>
         <Button onPress={() => navigate('AddFriend', { navigate: this.props.navigation })}>
           <Title>AddFriend</Title>
         </Button>

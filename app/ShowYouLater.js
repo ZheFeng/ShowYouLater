@@ -7,7 +7,7 @@ import Friends from './containers/Friends';
 import ChatRoom from './containers/ChatRoom';
 import AddFriend from './containers/AddFriend';
 import { StackNavigator } from 'react-navigation';
-import User from './store/User';
+import AppStore from './store/App';
 import { observer } from "mobx-react";
 
 
@@ -21,7 +21,7 @@ const firebaseConfig = {
   messagingSenderId: "789261927228"
 };
 const firebase = initializeApp(firebaseConfig);
-const user = new User(firebase);
+const app = new AppStore(firebase);
 // const messageDatabase = firebase.database().ref('messages');
 
 
@@ -34,7 +34,7 @@ const mapStoreToProps = (ScreenComponent) => {
       title
     };
     render() {
-      return <ScreenComponent user={user} {...this.props} />
+      return <ScreenComponent app={app} {...this.props} />
     }
   }
 }
@@ -52,10 +52,10 @@ const UnauthRouter = StackNavigator({
 @observer
 export default class App extends React.Component {
   render() {
-    if (user.checkingAuthState) {
+    if (app.checkingAuthState) {
       return <Spinner />
     }
-    if (!user.isLoggedIn) {
+    if (!app.isLoggedIn) {
       return <UnauthRouter test={123} />;
     }
     return (
